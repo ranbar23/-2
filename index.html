@@ -32,7 +32,6 @@
     </style>
 </head>
 <body>
-
     <div class="container">
         <h1>ברוך הבא לאתר הדשבורדים</h1>
         <p>בחר דשבורד לצפייה</p>
@@ -43,12 +42,11 @@
     <script>
         function openDashboard(dashboardNumber) {
             if (dashboardNumber === 1) {
-                window.open('https://public.tableau.com/views/2_17441369347930/Dashboard1?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link', '_blank');
+                window.location.href = 'https://public.tableau.com/views/2_17441369347930/Dashboard1?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link';
             } else if (dashboardNumber === 2) {
-                window.open('https://public.tableau.com/views/1_17441369143750/Dashboard2?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link', '_blank');
+                window.location.href = 'https://public.tableau.com/views/1_17441369143750/Dashboard2?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link';
             }
         }
     </script>
-
 </body>
 </html>
