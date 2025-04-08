@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>אתר עם דשבורדים</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .btn {
+            padding: 15px 30px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin: 10px;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        iframe {
+            width: 80%;
+            height: 500px;
+            border: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>ברוך הבא לאתר הדשבורדים</h1>
+        <p>בחר דשבורד לצפייה</p>
+        <button class="btn" onclick="openDashboard(1)">דשבורד 1</button>
+        <button class="btn" onclick="openDashboard(2)">דשבורד 2</button>
+        
+        <div id="dashboardFrame">
+            <!-- דשבורד יוצג כאן -->
+        </div>
+    </div>
+
+    <script>
+        function openDashboard(dashboardNumber) {
+            var frameContainer = document.getElementById('dashboardFrame');
+            var iframe = document.createElement('iframe');
+            
+            if (dashboardNumber === 1) {
+                iframe.src = 'https://public.tableau.com/views/2_17441369347930/Dashboard1?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link';
+            } else if (dashboardNumber === 2) {
+                iframe.src = 'https://public.tableau.com/views/1_17441369143750/Dashboard2?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link';
+            }
+            
+            // מנקה את התוכן הקודם ומוסיף את ה-iframe החדש
+            frameContainer.innerHTML = '';
+            frameContainer.appendChild(iframe);
+        }
+    </script>
+
+</body>
+</html>
