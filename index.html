@@ -29,55 +29,64 @@
         .btn:hover {
             background-color: #45a049;
         }
-        #dashboardContainer {
+        #dashboardPreview {
             width: 100%;
-            height: 600px;
-            margin-top: 20px;
+            max-width: 800px;
+            height: 400px;
+            margin: 20px auto;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            display: none;
+            position: relative;
+        }
+        #dashboardPreview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        #dashboardPreview a {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        #dashboardPreview a:hover {
+            background-color: #45a049;
         }
     </style>
-    <!-- טעינת ה-Tableau JavaScript API -->
-    <script src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>
 </head>
 <body>
     <div class="container">
         <h1>ברוך הבא לאתר הדשבורדים</h1>
         <p>בחר דשבורד לצפייה</p>
-        <button class="btn" onclick="loadDashboard(1)">דשבורד 1</button>
-        <button class="btn" onclick="loadDashboard(2)">דשבורד 2</button>
-        <div id="dashboardContainer"></div>
+        <button class="btn" onclick="showPreview(1)">דשבורד 1</button>
+        <button class="btn" onclick="showPreview(2)">דשבורד 2</button>
+        <div id="dashboardPreview">
+            <img id="previewImage" src="" alt="תצוגה מקדימה של הדשבורד">
+            <a id="dashboardLink" href="" target="_blank">צפה בדשבורד המלא</a>
+        </div>
     </div>
 
     <script>
-        let viz; // משתנה לשמירת אובייקט ה-Tableau Viz
-
-        function loadDashboard(dashboardNumber) {
-            const containerDiv = document.getElementById("dashboardContainer");
-            let url;
+        function showPreview(dashboardNumber) {
+            const previewDiv = document.getElementById("dashboardPreview");
+            const previewImage = document.getElementById("previewImage");
+            const dashboardLink = document.getElementById("dashboardLink");
 
             if (dashboardNumber === 1) {
-                url = "https://public.tableau.com/views/2_17441369347930/Dashboard1";
+                previewImage.src = "https://via.placeholder.com/800x400?text=Dashboard+1+Preview"; // החלף בלינק לתמונת תצוגה מקדימה
+                dashboardLink.href = "https://public.tableau.com/views/2_17441369347930/Dashboard1?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link";
             } else if (dashboardNumber === 2) {
-                url = "https://public.tableau.com/views/1_17441369143750/Dashboard2";
+                previewImage.src = "https://via.placeholder.com/800x400?text=Dashboard+2+Preview"; // החלף בלינק לתמונת תצוגה מקדימה
+                dashboardLink.href = "https://public.tableau.com/views/1_17441369143750/Dashboard2?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link";
             }
 
-            // אם יש viz קיים, הסר אותו לפני טעינת חדש
-            if (viz) {
-                viz.dispose();
-            }
-
-            // הגדרות ל-Tableau Viz
-            const options = {
-                width: "100%",
-                height: "600px",
-                hideTabs: true, // להסתיר את הכרטיסיות של Tableau
-                hideToolbar: true, // להסתיר את סרגל הכלים
-                onFirstInteractive: () => {
-                    console.log("הדשבורד נטען בהצלחה!");
-                }
-            };
-
-            // יצירת ה-Tableau Viz
-            viz = new tableau.Viz(containerDiv, url, options);
+            previewDiv.style.display = "block"; // הצג את התצוגה המקדימה
         }
     </script>
 </body>
