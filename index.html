@@ -29,12 +29,6 @@
         .btn:hover {
             background-color: #45a049;
         }
-        iframe {
-            width: 80%;
-            height: 500px;
-            border: none;
-            margin-top: 20px;
-        }
     </style>
 </head>
 <body>
@@ -44,26 +38,15 @@
         <p>בחר דשבורד לצפייה</p>
         <button class="btn" onclick="openDashboard(1)">דשבורד 1</button>
         <button class="btn" onclick="openDashboard(2)">דשבורד 2</button>
-        
-        <div id="dashboardFrame">
-            <!-- דשבורד יוצג כאן -->
-        </div>
     </div>
 
     <script>
         function openDashboard(dashboardNumber) {
-            var frameContainer = document.getElementById('dashboardFrame');
-            var iframe = document.createElement('iframe');
-            
             if (dashboardNumber === 1) {
-                iframe.src = 'https://public.tableau.com/views/2_17441369347930/Dashboard1?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link';
+                window.open('https://public.tableau.com/views/2_17441369347930/Dashboard1?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link', '_blank');
             } else if (dashboardNumber === 2) {
-                iframe.src = 'https://public.tableau.com/views/1_17441369143750/Dashboard2?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link';
+                window.open('https://public.tableau.com/views/1_17441369143750/Dashboard2?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link', '_blank');
             }
-            
-            // מנקה את התוכן הקודם ומוסיף את ה-iframe החדש
-            frameContainer.innerHTML = '';
-            frameContainer.appendChild(iframe);
         }
     </script>
 
