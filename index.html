@@ -29,31 +29,55 @@
         .btn:hover {
             background-color: #45a049;
         }
-        #dashboardFrame {
+        #dashboardContainer {
             width: 100%;
             height: 600px;
-            border: none;
             margin-top: 20px;
         }
     </style>
+    <!-- טעינת ה-Tableau JavaScript API -->
+    <script src="https://public.tableau.com/javascripts/api/tableau-2.min.js"></script>
 </head>
 <body>
     <div class="container">
         <h1>ברוך הבא לאתר הדשבורדים</h1>
         <p>בחר דשבורד לצפייה</p>
-        <button class="btn" onclick="openDashboard(1)">דשבורד 1</button>
-        <button class="btn" onclick="openDashboard(2)">דשבורד 2</button>
-        <iframe id="dashboardFrame" src=""></iframe>
+        <button class="btn" onclick="loadDashboard(1)">דשבורד 1</button>
+        <button class="btn" onclick="loadDashboard(2)">דשבורד 2</button>
+        <div id="dashboardContainer"></div>
     </div>
 
     <script>
-        function openDashboard(dashboardNumber) {
-            const frame = document.getElementById('dashboardFrame');
+        let viz; // משתנה לשמירת אובייקט ה-Tableau Viz
+
+        function loadDashboard(dashboardNumber) {
+            const containerDiv = document.getElementById("dashboardContainer");
+            let url;
+
             if (dashboardNumber === 1) {
-                frame.src = 'https://public.tableau.com/views/2_17441369347930/Dashboard1?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link';
+                url = "https://public.tableau.com/views/2_17441369347930/Dashboard1";
             } else if (dashboardNumber === 2) {
-                frame.src = 'https://public.tableau.com/views/1_17441369143750/Dashboard2?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link';
+                url = "https://public.tableau.com/views/1_17441369143750/Dashboard2";
             }
+
+            // אם יש viz קיים, הסר אותו לפני טעינת חדש
+            if (viz) {
+                viz.dispose();
+            }
+
+            // הגדרות ל-Tableau Viz
+            const options = {
+                width: "100%",
+                height: "600px",
+                hideTabs: true, // להסתיר את הכרטיסיות של Tableau
+                hideToolbar: true, // להסתיר את סרגל הכלים
+                onFirstInteractive: () => {
+                    console.log("הדשבורד נטען בהצלחה!");
+                }
+            };
+
+            // יצירת ה-Tableau Viz
+            viz = new tableau.Viz(containerDiv, url, options);
         }
     </script>
 </body>
