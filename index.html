@@ -16,10 +16,8 @@
 <body class="bg-gray-100 min-h-screen flex flex-col items-center justify-center p-6 space-y-6">
 
   <section class="text-center space-y-4" id="tableau">
-    <h2 class="text-3xl font-bold">Sausage Dashboard 🌭📊</h2>
-    <p class="text-lg">Feast your eyes on our featured visualization below - sausage stats galore! 👇</p>
-
-    <!-- כפתורים -->
+    <h2 class="text-3xl font-bold">my Dashboard</h2>
+      <!-- כפתורים -->
     <div class="flex flex-wrap gap-4 justify-center">
       <button class="btn px-6 py-3 bg-gray-400 rounded-2xl shadow hover:bg-gray-500" onclick="changeDashboard(1, this)">דשבורד 1</button>
       <button class="btn px-6 py-3 bg-gray-400 rounded-2xl shadow hover:bg-gray-500" onclick="changeDashboard(2, this)">דשבורד 2</button>
@@ -39,9 +37,9 @@
 
   <script>
     const dashboards = {
-      1: "https://public.tableau.com/views/SausageNewLetsPray/Dashboard1",
-      2: "https://public.tableau.com/views/SausageNewLetsPray/Dashboard2",
-      3: "https://public.tableau.com/views/SausageNewLetsPray/Dashboard3"
+      1: "https://public.tableau.com/views/7_1_17453432459860/profit?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link",
+      2: "https://public.tableau.com/views/7_1_17453432459860/profit?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link",
+      3: "https://public.tableau.com/views/7_2_17453432686830/category?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link"
     };
 
     async function changeDashboard(number, button) {
